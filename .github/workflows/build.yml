@@ -8,8 +8,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
+
+      - name: Clone godot-cpp
+        run: |
+          git clone -b 4.2 https://github.com/godotengine/godot-cpp.git godot-cpp
 
       - name: Set up Python and SCons
         uses: actions/setup-python@v5
@@ -20,4 +22,8 @@ jobs:
         run: pip install scons
 
       - name: Build for Android arm64
-        run: scons platform=android target=template_debug arch=arm64
+        run: |
+          cd godot-cpp
+          scons platform=android target=template_debug arch=arm64
+          cd ..
+          scons platform=android target=template_debug arch=arm64
