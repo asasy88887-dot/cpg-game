@@ -1,0 +1,9 @@
+[configuration]
+
+entry_symbol = "gde_library_init"
+compatibility_minimum = "4.2"
+
+[libraries]
+
+android.debug.arm64 = "res://bin/libmygame.so"
+android.release.arm64 = "res://bin/libmygame.so"
