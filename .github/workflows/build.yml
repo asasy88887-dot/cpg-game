@@ -23,6 +23,7 @@ jobs:
 
       - name: Build for Android arm64
         run: |
+          export ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME
           cd godot-cpp
           scons platform=android target=template_debug arch=arm64
           cd ..
